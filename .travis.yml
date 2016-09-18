@@ -30,9 +30,6 @@ script:
   # run playbook
   - "ansible-playbook -i inventory test.yml --connection=local"
 
-  # Basic role syntax check
-  - ansible-playbook tests/test.yml -i tests/inventory --syntax-check
-
   # run again to check if it is indempotent
   - >
     ansible-playbook -i inventory test.yml --connection=local
