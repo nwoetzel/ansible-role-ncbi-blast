@@ -10,4 +10,4 @@
 - name: set ncbi blast download url and install dir
   set_fact:
     ncbi_blast_install_dir:  "{{ ncbi_blast_install_dir | default( ansible_env.HOME ~ '/sw/ncbi_blast' ) }}"
-    ncbi_blast_download_url: "{{ ncbi_blast_defaults.url }}/{{ ncbi_blast_version }}//{{ ncbi_blas_file_tar }}"
+    ncbi_blast_download_url: "{{ ncbi_blast_defaults.url }}/{{ ncbi_blast_version }}//{{ ncbi_blast_file_tar }}"
