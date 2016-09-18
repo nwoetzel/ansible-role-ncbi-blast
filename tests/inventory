@@ -1,0 +1,2 @@
+[ncbi_blast]
+localhost ansible_connection=local

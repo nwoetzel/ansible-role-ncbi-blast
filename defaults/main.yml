@@ -1,0 +1,7 @@
+---
+# version to install
+#ncbi_blast_version: "2.4.0"
+# install location
+#ncbi_blast_install_dir: # ansible_env.HOME ~ '/sw/ncbi_blast'
+# download to ansible master to remote if this variable is set
+#ncbi_blast_download_folder_remote: /tmp

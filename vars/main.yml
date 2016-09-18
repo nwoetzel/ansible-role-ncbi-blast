@@ -1,0 +1,5 @@
+---
+ncbi_blast_defaults:
+  url: "ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+"
+  version:
+    latest: "2.4.0"

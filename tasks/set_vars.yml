@@ -1,0 +1,13 @@
+---
+- name: set ncbi blast vars from defaults or settings
+  set_fact:
+    ncbi_blast_version:      "{{ ncbi_blast_version | default( ncbi_blast.version.latest ) }}"
+
+- name: set name of tar file
+  set_fact:
+    ncbi_blast_file_tar:     "ncbi-blast-{{ ncbi_blast_version }}+-x64-linux.tar.gz"
+
+- name: set ncbi blast download url and install dir
+  set_fact:
+    ncbi_blast_install_dir:  "{{ ncbi_blast_install_dir | default( ansible_env.HOME ~ '/sw/ncbi_blast' ) }}"
+    ncbi_blast_download_url: "{{ ncbi_blast.url }}/{{ ncbi_blast_version }}//{{ ncbi_blas_file_tar }}"

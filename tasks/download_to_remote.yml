@@ -1,0 +1,17 @@
+---
+- name: set download location on remote for tar file
+  set_fact:
+    ncbi_blast_download_folder: "{{ ncbi_blast_download_folder_remote }}"
+
+- name: create downloads folder if it does not exist yet
+  file:
+    dest: "{{ ncbi_blast_download_folder }}"
+    state: directory
+  tags: ncbi_blast_remote_download
+
+- name: Download ncbi blast to remote if we don't have it
+  get_url:
+    url:   "{{ ncbi_blast_download_url }}"
+    dest:  "{{ ncbi_blast_download_folder ~ '/' ~ ncbi_blast_file_tar }}"
+    force: no
+  tags: ncbi_blast_remote_download

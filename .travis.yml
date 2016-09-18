@@ -1,0 +1,44 @@
+---
+language: python
+python: "2.7"
+
+# Use the new container infrastructure
+sudo: false
+
+cache:
+-pip
+
+# Install ansible
+addons:
+  apt:
+    packages:
+    - python-pip
+
+install:
+  # Install Ansible.
+  - pip install ansible==2.0.2.0
+
+  # Check ansible version
+  - ansible --version
+
+script:
+  - "cd tests"
+
+  # check syntax
+  - "ansible-playbook -i inventory test.yml --syntax-check"
+
+  # run playbook
+  - "ansible-playbook -i inventory test.yml --connection=local"
+
+  # Basic role syntax check
+  - ansible-playbook tests/test.yml -i tests/inventory --syntax-check
+
+  # run again to check if it is indempotent
+  - >
+    ansible-playbook -i inventory test.yml --connection=local
+    | grep -q 'changed=0.*failed=0'
+    && (echo 'Idempotence test: pass' && exit 0)
+    || (echo 'Idempotence test: fail' && exit 1)
+
+#notifications:
+#  webhooks: https://galaxy.ansible.com/api/v1/notifications/
