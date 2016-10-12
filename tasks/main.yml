@@ -22,5 +22,5 @@
     copy:    "{{ (ncbi_blast_download_folder_remote is defined) | ternary('no','yes') }}"
     src:     "{{ ncbi_blast_download_folder ~ '/' ~ ncbi_blast_file_tar }}"
     dest:    "{{ ncbi_blast_install_dir }}"
-    creates: "{{ ncbi_blast_ini_path }}"
+    creates: "{{ ncbi_blast_unpack_dir }}"
   tags: [ncbi_blast]
